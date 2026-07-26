@@ -2,10 +2,15 @@
   // Assets-only Worker — no server code, no D1, no build step.
   // Deploy:  pnpm dlx wrangler deploy
   // Lands at: https://dimmsville-armory.wisense.workers.dev
+  //
+  // IMPORTANT: assets.directory is "./public", NOT the repo root. Everything in
+  // that directory is served publicly, so the directory boundary is what keeps
+  // BUILD_PLAN.md (unmasked FFL number, pricing) and .git off the open internet.
+  // Do not point this at "." — that ships the whole repo. It has happened.
   "name": "dimmsville-armory",
   "compatibility_date": "2026-07-26",
   "assets": {
-    "directory": ".",
+    "directory": "./public",
     "not_found_handling": "404-page"
   },
   "keep_vars": true
