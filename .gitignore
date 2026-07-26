@@ -1,0 +1,8 @@
+.DS_Store
+.vercel
+.wrangler
+node_modules
+.claude/
+
+# Internal — sales strategy, pricing, unmasked FFL number. Never in the public repo.
+BUILD_PLAN.md

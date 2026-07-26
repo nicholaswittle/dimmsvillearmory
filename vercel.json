@@ -1,0 +1,18 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://dimmsville-armory.wisense.workers.dev",
+      "permanent": false
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://dimmsville-armory.wisense.workers.dev/:path*",
+      "permanent": false
+    }
+  ]
+}

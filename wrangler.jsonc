@@ -1,0 +1,12 @@
+{
+  // Assets-only Worker — no server code, no D1, no build step.
+  // Deploy:  pnpm dlx wrangler deploy
+  // Lands at: https://dimmsville-armory.wisense.workers.dev
+  "name": "dimmsville-armory",
+  "compatibility_date": "2026-07-26",
+  "assets": {
+    "directory": ".",
+    "not_found_handling": "404-page"
+  },
+  "keep_vars": true
+}
