@@ -690,9 +690,9 @@
       know the moment your firearm arrives at the shop.</p>
   </div>
 
-  <!-- FORM ENDPOINT: replace REPLACE_WITH_FORM_ID once the Formspree form exists.
-       Until then this form will not deliver anything. See BUILD_PLAN.md Step 7. -->
-  <form class="form-card scroll-in" action="https://formspree.io/f/REPLACE_WITH_FORM_ID" method="POST">
+  <!-- Both forms POST to the same Formspree form; the hidden _subject field is what
+       separates transfer requests from inventory inquiries in the inbox. -->
+  <form class="form-card scroll-in" action="https://formspree.io/f/xlgqanew" method="POST">
     <input type="hidden" name="_subject" value="Transfer request — Dimmsville Armory">
 
     <fieldset>
@@ -806,8 +806,8 @@
       we'll track down a price and a lead time.</p>
   </div>
 
-  <!-- FORM ENDPOINT: the same Formspree form works here — the _subject line separates the two. -->
-  <form class="form-card scroll-in" action="https://formspree.io/f/REPLACE_WITH_FORM_ID" method="POST">
+  <!-- Same endpoint as the transfer form — see the note above. -->
+  <form class="form-card scroll-in" action="https://formspree.io/f/xlgqanew" method="POST">
     <input type="hidden" name="_subject" value="Inventory inquiry — Dimmsville Armory">
 
     <fieldset>
