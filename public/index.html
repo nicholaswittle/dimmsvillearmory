@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dimmsville Armory · Thompsontown, PA | FFL Transfers, Gunsmithing &amp; NFA</title>
+  <title>FFL Transfers &amp; Suppressors · Dimmsville Armory · Thompsontown, PA</title>
   <meta name="description" content="Licensed Type 07 firearms manufacturer in Thompsontown, PA. FFL transfers, custom gunsmithing, NFA/Class III, and special orders. Request a transfer online — pay at pickup. Call (717) 953-6359.">
   <meta name="theme-color" content="#0E1014">
+  <link rel="canonical" href="https://dimmsville-armory.wisense.workers.dev/">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230E1014'/%3E%3Cpath d='M16 4l10 4v8c0 6-4 10-10 12C10 26 6 22 6 16V8z' fill='none' stroke='%23C9A227' stroke-width='2.2'/%3E%3Cpath d='M16 9.5v3.2M16 19.3v3.2M9.5 16h3.2M19.3 16h3.2' stroke='%23C9A227' stroke-width='2.2' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='1.6' fill='%23C9A227'/%3E%3C/svg%3E" type="image/svg+xml">
 
   <!-- Share preview. og:image MUST be an absolute URL — relative paths are ignored
@@ -33,6 +34,11 @@
     "@type": "GunStore",
     "name": "Dimmsville Armory",
     "legalName": "Dimmsville Armory LLC",
+    "url": "https://dimmsville-armory.wisense.workers.dev/",
+    "image": "https://dimmsville-armory.wisense.workers.dev/images/share-card.jpg",
+    "priceRange": "$$",
+    "publicAccess": false,
+    "availableLanguage": "en",
     "description": "Licensed Type 07 firearms manufacturer and NFA/Class III dealer serving Juniata and Perry County, Pennsylvania.",
     "telephone": "+1-717-953-6359",
     "address": {
@@ -44,6 +50,63 @@
     },
     "areaServed": ["Thompsontown PA", "Dimmsville PA", "Juniata County PA", "Perry County PA"]
   }
+  </script>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What do I bring to pick up my firearm?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A valid, current photo ID with your correct address — a PA driver's license is easiest. If your license address is out of date, bring a supporting document. You'll fill out the ATF Form 4473 here when you collect it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does the background check take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most checks clear while you wait, usually in a few minutes. Occasionally the state comes back with a delay that's out of our hands — if that happens we'll explain exactly where things stand before you leave."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does a transfer cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Give us a call at (717) 953-6359 for current transfer rates. It's a flat fee per firearm, paid at pickup."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the seller need anything from you?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — a copy of our FFL. Submit the transfer request above and we'll send it to them directly, so you're not stuck playing middleman."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I buy a firearm on this website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Nothing is sold or paid for online. This site is for starting transfers and sending us inquiries — every sale, background check, and payment happens in person at the shop."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you handle suppressors and SBRs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We do. We're a Type 07 manufacturer with Class III eligibility, so we can help with Form 4 paperwork and walk you through the stamp timeline. Call and we'll talk it through."
+      }
+    }
+  ]
+}
   </script>
 
   <script>document.documentElement.classList.add("js-anim");</script>
@@ -418,6 +481,28 @@
     .form-card { padding: 24px 20px 22px; }
   }
 
+  /* ---------- For the selling dealer ---------- */
+  .dealerbox {
+    margin-top: 30px; background: var(--surface-2);
+    border: 1px solid var(--line-strong); border-left: 3px solid var(--crust);
+    padding: 26px 28px;
+  }
+  .dealerbox h3 {
+    font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em;
+    font-size: 1.1rem; margin: 0 0 6px;
+  }
+  .dealerbox .lede { margin: 0 0 18px; color: var(--muted); font-size: 0.96rem; max-width: 62ch; }
+  .dealerbox ol { margin: 0; padding-left: 20px; color: var(--ink); font-size: 0.96rem; line-height: 1.65; }
+  .dealerbox ol li { margin-bottom: 7px; }
+  .dealerbox ol li:last-child { margin-bottom: 0; }
+  .dealerbox .callout {
+    margin: 18px 0 0; padding: 12px 15px; background: var(--ground);
+    border: 1px solid var(--line-strong);
+    font-family: var(--display); font-size: 0.88rem; font-weight: 700; color: var(--ink);
+  }
+  .dealerbox .callout a { color: var(--sauce); text-decoration: none; }
+  @media (max-width: 700px) { .dealerbox { padding: 20px 18px; } }
+
   /* ---------- FAQ ---------- */
   .faq { padding-top: 56px; padding-bottom: 20px; }
   .faq-list { margin-top: 18px; border: 1px solid var(--line-strong); background: var(--surface); }
@@ -663,6 +748,9 @@
        separates transfer requests from inventory inquiries in the inbox. -->
   <form class="form-card scroll-in" action="https://formspree.io/f/xlgqanew" method="POST">
     <input type="hidden" name="_subject" value="Transfer request — Dimmsville Armory">
+    <input type="hidden" name="_next" value="https://dimmsville-armory.wisense.workers.dev/thanks?k=transfer">
+    <!-- Spam trap: bots fill every field they find. Humans never see this one. -->
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 
     <fieldset>
       <legend>1 &middot; Your information</legend>
@@ -778,6 +866,9 @@
   <!-- Same endpoint as the transfer form — see the note above. -->
   <form class="form-card scroll-in" action="https://formspree.io/f/xlgqanew" method="POST">
     <input type="hidden" name="_subject" value="Inventory inquiry — Dimmsville Armory">
+    <input type="hidden" name="_next" value="https://dimmsville-armory.wisense.workers.dev/thanks?k=inquiry">
+    <!-- Spam trap: bots fill every field they find. Humans never see this one. -->
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 
     <fieldset>
       <legend>Your information</legend>
@@ -817,6 +908,27 @@
         paid for when you collect them.</p>
     </div>
   </form>
+</section>
+
+<section class="wrap" id="dealers">
+  <div class="dealerbox scroll-in">
+    <h3>For the selling dealer</h3>
+    <p class="lede">Shipping a firearm to us on behalf of a customer? Here's what we need and how
+      to reach us. We answer licensee requests the same business day.</p>
+    <ol>
+      <li><strong>Contact us before you ship.</strong> A package arriving with no paperwork and no
+        heads-up is the single most common cause of a delayed transfer.</li>
+      <li><strong>Request our signed FFL copy</strong> by phone at
+        <a href="tel:+17179536359">(717) 953-6359</a>. We send license copies to licensed dealers
+        only, not to non-licensees.</li>
+      <li><strong>Put the customer's name and your order number on the invoice</strong> inside the
+        package, so we can match it to the right transfer request.</li>
+      <li><strong>Ship to the licensed premises</strong> at the address on our FFL. We'll confirm
+        receipt and contact the customer the day it lands.</li>
+    </ol>
+    <p class="callout">Buying the firearm rather than shipping it? Start here instead &mdash;
+      <a href="#transfer">submit a transfer request</a> and we'll contact your dealer for you.</p>
+  </div>
 </section>
 
 <section class="wrap faq" id="faq">
@@ -912,10 +1024,11 @@
     </div>
     <div class="footer-cols">
       <div class="footer-col">
-        <h4>Shop</h4>
+        <h4>Services</h4>
         <a href="#services">Services</a>
         <a href="#transfer">FFL Transfers</a>
         <a href="#inquiry">Special Orders</a>
+        <a href="#dealers">For dealers</a>
         <a href="#faq">Questions</a>
       </div>
       <div class="footer-col">

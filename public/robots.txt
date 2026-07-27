@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /thanks.html
+
+Sitemap: https://dimmsville-armory.wisense.workers.dev/sitemap.xml
