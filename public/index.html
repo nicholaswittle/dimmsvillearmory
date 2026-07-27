@@ -37,17 +37,12 @@
     "telephone": "+1-717-953-6359",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "30 Lake Road",
       "addressLocality": "Thompsontown",
       "addressRegion": "PA",
       "postalCode": "17094",
       "addressCountry": "US"
     },
-    "areaServed": ["Thompsontown PA", "Dimmsville PA", "Juniata County PA", "Perry County PA"],
-    "openingHoursSpecification": [
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"], "opens": "10:00", "closes": "18:00" },
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "15:00" }
-    ]
+    "areaServed": ["Thompsontown PA", "Dimmsville PA", "Juniata County PA", "Perry County PA"]
   }
   </script>
 
@@ -165,19 +160,6 @@
     padding: 5px 11px; border-radius: 999px;
     border: 1px solid var(--line-strong); color: var(--muted);
   }
-  .status-pill .beat {
-    width: 7px; height: 7px; border-radius: 50%; background: var(--muted);
-    position: relative;
-  }
-  .status-pill.is-open { color: var(--open); border-color: color-mix(in srgb, var(--open) 45%, transparent); }
-  .status-pill.is-open .beat { background: var(--open); }
-  .status-pill.is-open .beat::after {
-    content: ""; position: absolute; inset: -4px; border-radius: 50%;
-    border: 1px solid var(--open); animation: pulse 2.2s ease-out infinite;
-  }
-  .status-pill.is-closed { color: var(--closed); border-color: color-mix(in srgb, var(--closed) 40%, transparent); }
-  .status-pill.is-closed .beat { background: var(--closed); }
-  @keyframes pulse { 0% { transform: scale(0.7); opacity: 0.9; } 100% { transform: scale(2.1); opacity: 0; } }
 
   .topbar-meta { display: flex; align-items: center; gap: 18px; font-family: var(--display); font-size: 0.8rem; }
   .topbar-meta a { text-decoration: none; color: var(--muted); }
@@ -245,11 +227,8 @@
   }
   .hero-status {
     font-family: var(--display); font-size: 0.86rem; font-weight: 700; letter-spacing: 0.02em;
-    margin: 0 0 18px; display: inline-flex; align-items: center; gap: 9px;
+    margin: 0 0 18px; color: var(--sauce);
   }
-  .hero-status .beat { width: 8px; height: 8px; border-radius: 50%; background: var(--char-muted); }
-  .hero-status.is-open { color: #7EC08A; } .hero-status.is-open .beat { background: #7EC08A; }
-  .hero-status.is-closed { color: #E88A78; } .hero-status.is-closed .beat { background: #E88A78; }
   .hero-lede {
     font-size: 1.16rem; line-height: 1.45; color: color-mix(in srgb, var(--char-ink) 92%, transparent);
     max-width: 34ch; margin: 0 0 24px; font-weight: 500;
@@ -370,10 +349,7 @@
     color: var(--sauce); text-decoration: none; line-height: 1;
   }
   .order-phone:hover { color: #fff; }
-  .order-status { font-family: var(--display); font-size: 0.9rem; font-weight: 700; margin: 14px 0 0; display: inline-flex; align-items: center; gap: 9px; }
-  .order-status .beat { width: 8px; height: 8px; border-radius: 50%; background: var(--char-muted); }
-  .order-status.is-open { color: #7EC08A; } .order-status.is-open .beat { background: #7EC08A; }
-  .order-status.is-closed { color: #E88A78; } .order-status.is-closed .beat { background: #E88A78; }
+  .order-status { font-family: var(--display); font-size: 0.9rem; font-weight: 700; margin: 14px 0 0; color: var(--char-muted); }
   .order-steps { display: flex; flex-direction: column; }
   .order-step { padding: 18px 0; border-top: 1px solid var(--char-line); display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; }
   .order-step:last-child { border-bottom: 1px solid var(--char-line); }
@@ -460,13 +436,6 @@
   .visit-col { padding: 34px 32px; }
   .visit-col:first-child { border-right: 1px solid var(--line); }
   .visit-col h3 { font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; font-size: 1.15rem; margin: 0 0 18px; }
-  .hours-row { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); font-family: var(--display); font-size: 0.92rem; }
-  .hours-row:last-child { border-bottom: none; }
-  .hours-row .day { font-weight: 700; }
-  .hours-row .time { color: var(--muted); font-variant-numeric: tabular-nums; }
-  .hours-row.is-closed .time { color: var(--closed); }
-  .hours-row.is-today { background: color-mix(in srgb, var(--sauce) 18%, transparent); margin: 0 -32px; padding-left: 32px; padding-right: 32px; }
-  .hours-row.is-today .day::after { content: " · Today"; color: var(--sauce-deep); font-weight: 700; }
   .addr-line { margin: 0 0 6px; }
   .addr-line.big { font-family: var(--display); font-weight: 700; font-size: 1.1rem; }
   .visit-links { display: flex; flex-direction: column; gap: 12px; margin-top: 22px; }
@@ -549,7 +518,7 @@
   <div class="topbar-inner">
     <div class="brand-cluster">
       <a class="wordmark" href="#top">Dimmsville <span class="apos">Armory</span></a>
-      <span class="status-pill" id="statusPill"><span class="beat"></span><span id="statusPillText">Hours</span></span>
+      <span class="status-pill">Type 07 &middot; Class III</span>
     </div>
     <div class="topbar-meta">
       <a class="nav-link" href="#services">Services</a>
@@ -570,7 +539,7 @@
   <div class="hero-inner">
     <p class="hero-sub">Thompsontown, Pennsylvania &middot; Juniata County</p>
     <h1>Dimmsville <span class="apos">Armory</span></h1>
-    <p class="hero-status" id="heroStatus"><span class="beat"></span><span id="heroStatusText">Checking today's hours&hellip;</span></p>
+    <p class="hero-status">By appointment &mdash; call or send a request and we'll set a time</p>
 
     <div class="ffl-badge">
       <span class="lic">Federally Licensed</span>
@@ -644,7 +613,7 @@
       <p class="order-lede">Four steps, no surprises. Start it from your phone in the parking lot
         of wherever you are &mdash; we'll take it from there.</p>
       <a class="order-phone" href="tel:+17179536359">(717) 953-6359</a>
-      <p class="order-status" id="orderStatus"><span class="beat"></span><span id="orderStatusText">Checking today's hours&hellip;</span></p>
+      <p class="order-status">Call or text &mdash; we'll get back to you the same day</p>
     </div>
     <div class="order-steps">
       <div class="order-step">
@@ -895,12 +864,15 @@
 <section class="wrap" id="visit">
   <div class="section-head scroll-in">
     <p class="eyebrow">Find us</p>
-    <h2>Hours &amp; location</h2>
+    <h2>Getting in touch</h2>
   </div>
   <div class="visit-inner scroll-in">
     <div class="visit-col">
-      <h3>Hours</h3>
-      <div id="hoursList"></div>
+      <h3>By appointment</h3>
+      <p class="addr-line">We work by appointment rather than set counter hours, so you're never
+        driving out to find nobody here. Call, text, or send a request and we'll arrange a time
+        that suits &mdash; evenings and weekends included.</p>
+      <p class="addr-line">The exact address is confirmed when we schedule your pickup.</p>
       <div class="amenity-strip">
         <span>FFL Transfers</span>
         <span>Gunsmithing</span>
@@ -913,20 +885,19 @@
     <div class="visit-col">
       <h3>Location</h3>
       <p class="addr-line big">Dimmsville Armory LLC</p>
-      <p class="addr-line">30 Lake Road</p>
       <p class="addr-line">Thompsontown, PA 17094</p>
-      <p class="addr-line">Juniata County</p>
+      <p class="addr-line">Juniata County, Pennsylvania</p>
       <div class="visit-links">
         <a class="visit-link" href="tel:+17179536359">Call (717) 953-6359 &rarr;</a>
-        <a class="visit-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=30%20Lake%20Road%2C%20Thompsontown%2C%20PA%2017094" target="_blank" rel="noopener">Get directions &rarr;</a>
+        <a class="visit-link" href="#inquiry">Send us a question &rarr;</a>
         <a class="visit-link" href="#transfer">Start a transfer request &rarr;</a>
       </div>
     </div>
   </div>
   <div class="map-frame scroll-in">
     <iframe
-      title="Map to Dimmsville Armory, Thompsontown, PA"
-      src="https://www.google.com/maps?q=30%20Lake%20Road%2C%20Thompsontown%2C%20PA%2017094&amp;output=embed"
+      title="Thompsontown, Pennsylvania — Juniata County"
+      src="https://www.google.com/maps?q=Thompsontown%2C%20PA%2017094&amp;output=embed"
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
@@ -948,16 +919,16 @@
         <a href="#faq">Questions</a>
       </div>
       <div class="footer-col">
-        <h4>Hours</h4>
-        <span class="time">Sun &ndash; Mon &middot; Closed</span>
-        <span class="time">Tue &ndash; Fri &middot; 10 AM &ndash; 6 PM</span>
-        <span class="time">Sat &middot; 9 AM &ndash; 3 PM</span>
+        <h4>Visiting</h4>
+        <span class="time">By appointment</span>
+        <span class="time">Evenings &amp; weekends</span>
+        <span class="time">Call to arrange</span>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
         <a href="tel:+17179536359">(717) 953-6359</a>
-        <span>30 Lake Road<br>Thompsontown, PA 17094</span>
-        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=30%20Lake%20Road%2C%20Thompsontown%2C%20PA%2017094" target="_blank" rel="noopener">Directions</a>
+        <span>Thompsontown, PA 17094</span>
+        <a href="#transfer">Request a transfer</a>
       </div>
     </div>
   </div>
@@ -970,7 +941,7 @@
 
 <div class="orderbar" id="orderbar">
   <div class="orderbar-inner">
-    <div class="orderbar-text"><strong id="orderbarStatus">Open now</strong><span class="long"> &mdash; FFL transfers &amp; gunsmithing in Thompsontown, PA</span></div>
+    <div class="orderbar-text"><strong>By appointment</strong><span class="long"> &mdash; FFL transfers &amp; gunsmithing in Thompsontown, PA</span></div>
     <a class="call-btn" href="tel:+17179536359">Call (717) 953-6359</a>
   </div>
 </div>
@@ -994,88 +965,6 @@
         sync();
       });
       sync();
-    })();
-
-    /* ---- Hours + live open/closed ----
-       PLACEHOLDER HOURS — swap for the shop's real schedule (BUILD_PLAN.md Q4).
-       Keep the schema.org openingHoursSpecification in <head> in sync.
-       0=Sun … 6=Sat. Minutes from midnight. null = closed. */
-    var SCHED = {
-      0: null,
-      1: null,
-      2: [10 * 60, 18 * 60],
-      3: [10 * 60, 18 * 60],
-      4: [10 * 60, 18 * 60],
-      5: [10 * 60, 18 * 60],
-      6: [9 * 60, 15 * 60]
-    };
-    var DAYNAME = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-    function fmt(mins) {
-      var h = Math.floor(mins / 60), m = mins % 60;
-      var ap = h >= 12 ? "PM" : "AM";
-      var hh = h % 12; if (hh === 0) hh = 12;
-      return hh + (m ? ":" + String(m).padStart(2, "0") : "") + " " + ap;
-    }
-
-    function computeStatus() {
-      var now = new Date();
-      var day = now.getDay();
-      var mins = now.getHours() * 60 + now.getMinutes();
-      var today = SCHED[day];
-      if (today && mins >= today[0] && mins < today[1]) {
-        return { open: true, text: "Open now · til " + fmt(today[1]) };
-      }
-      for (var i = 0; i < 8; i++) {
-        var d = (day + i) % 7;
-        var sch = SCHED[d];
-        if (!sch) continue;
-        if (i === 0 && mins >= sch[1]) continue;
-        if (i === 0 && mins < sch[0]) return { open: false, text: "Opens today at " + fmt(sch[0]) };
-        var label = i === 1 ? "tomorrow" : DAYNAME[d];
-        return { open: false, text: "Closed · opens " + label + " " + fmt(sch[0]) };
-      }
-      return { open: false, text: "Closed" };
-    }
-
-    var st = computeStatus();
-
-    var pill = document.getElementById("statusPill");
-    pill.classList.add(st.open ? "is-open" : "is-closed");
-    document.getElementById("statusPillText").textContent = st.open ? "Open now" : "Closed";
-
-    var heroStatus = document.getElementById("heroStatus");
-    heroStatus.classList.add(st.open ? "is-open" : "is-closed");
-    document.getElementById("heroStatusText").textContent = st.text;
-
-    document.getElementById("orderbarStatus").textContent = st.open ? "Open now" : "Closed";
-
-    var orderStatus = document.getElementById("orderStatus");
-    orderStatus.classList.add(st.open ? "is-open" : "is-closed");
-    document.getElementById("orderStatusText").textContent = st.text;
-
-    /* Build the hours list, grouping consecutive days that share a schedule. */
-    (function () {
-      var todayIdx = new Date().getDay();
-      function key(d) { var s = SCHED[d]; return s ? s[0] + "-" + s[1] : "closed"; }
-      var groups = [];
-      for (var d = 0; d < 7; d++) {
-        var k = key(d);
-        var last = groups[groups.length - 1];
-        if (last && last.k === k) { last.end = d; last.today = last.today || d === todayIdx; }
-        else { groups.push({ k: k, start: d, end: d, today: d === todayIdx }); }
-      }
-      var html = "";
-      groups.forEach(function (g) {
-        var label = g.start === g.end
-          ? DAYNAME[g.start]
-          : DAYNAME[g.start].slice(0, 3) + " – " + DAYNAME[g.end].slice(0, 3);
-        var sch = SCHED[g.start];
-        var time = sch ? fmt(sch[0]) + " – " + fmt(sch[1]) : "Closed";
-        html += '<div class="hours-row' + (sch ? "" : " is-closed") + (g.today ? " is-today" : "") + '">' +
-                '<span class="day">' + label + '</span><span class="time">' + time + '</span></div>';
-      });
-      document.getElementById("hoursList").innerHTML = html;
     })();
 
     /* ---- Scroll-in reveals ----
