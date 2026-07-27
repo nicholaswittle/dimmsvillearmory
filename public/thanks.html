@@ -128,15 +128,30 @@
      so each gets the confirmation copy that actually applies to it. */
   (function () {
     var kind = new URLSearchParams(location.search).get("k");
-    if (kind !== "inquiry") return;
-    document.getElementById("headline").textContent = "Inquiry received";
-    document.getElementById("lede").textContent =
-      "Thanks — we've got it. Here's what happens next.";
-    document.getElementById("steps").innerHTML =
-      "<li>We check availability and pricing with our distributors.</li>" +
-      "<li>We get back to you with a price and a realistic lead time.</li>" +
-      "<li>If you'd like to go ahead, we order it in and call you when it lands.</li>" +
-      "<li>You pay when you collect it — nothing is charged up front.</li>";
+
+    if (kind === "inquiry") {
+      document.getElementById("headline").textContent = "Inquiry received";
+      document.getElementById("lede").textContent =
+        "Thanks — we've got it. Here's what happens next.";
+      document.getElementById("steps").innerHTML =
+        "<li>We check availability and pricing with our distributors.</li>" +
+        "<li>We get back to you with a price and a realistic lead time.</li>" +
+        "<li>If you'd like to go ahead, we order it in and call you when it lands.</li>" +
+        "<li>You pay when you collect it — nothing is charged up front.</li>";
+      return;
+    }
+
+    if (kind === "dealer") {
+      document.getElementById("headline").textContent = "Request received";
+      document.getElementById("lede").textContent =
+        "Thanks — we'll send our signed FFL copy to the address you gave us, same business day.";
+      document.getElementById("steps").innerHTML =
+        "<li>We email our signed FFL to the address you provided.</li>" +
+        "<li>Ship to the address shown on that document.</li>" +
+        "<li>Include the customer's name and your order number on the invoice inside the package.</li>" +
+        "<li>We confirm receipt and contact the customer the day it arrives.</li>";
+      return;
+    }
   })();
 </script>
 </body>

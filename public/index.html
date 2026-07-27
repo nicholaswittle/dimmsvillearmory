@@ -241,6 +241,27 @@
   }
   .theme-toggle:hover { color: var(--ink); border-color: var(--ink); }
   @media (max-width: 900px) { .topbar-meta .nav-link, .topbar-meta .sep { display: none; } }
+  /* The page is very long; on mobile the topbar links are hidden, so give a
+     horizontally scrollable jump bar instead of nothing at all. */
+  .jumpbar { display: none; }
+  @media (max-width: 900px) {
+    .jumpbar {
+      display: flex; gap: 0; overflow-x: auto; scrollbar-width: none;
+      position: sticky; top: 53px; z-index: 39;
+      background: var(--surface); border-bottom: 1px solid var(--line-strong);
+      -webkit-overflow-scrolling: touch;
+    }
+    .jumpbar::-webkit-scrollbar { display: none; }
+    .jumpbar a {
+      flex: 0 0 auto; padding: 11px 16px; white-space: nowrap;
+      font-family: var(--display); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      border-right: 1px solid var(--line);
+    }
+    .jumpbar a:last-child { border-right: none; }
+    .jumpbar a.key { color: var(--sauce); }
+  }
   @media (max-width: 560px) { .status-pill { display: none; } }
 
   /* ---------- Hero ---------- */
@@ -457,7 +478,7 @@
   }
   .field label .req { color: var(--sauce); }
   .field input, .field select, .field textarea {
-    font-family: var(--body); font-size: 0.98rem; color: var(--ink);
+    font-family: var(--body); font-size: 16px; color: var(--ink);
     background: var(--ground); border: 1px solid var(--line-strong);
     border-radius: var(--radius); padding: 11px 13px; width: 100%;
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
@@ -502,6 +523,13 @@
   }
   .dealerbox .callout a { color: var(--sauce); text-decoration: none; }
   @media (max-width: 700px) { .dealerbox { padding: 20px 18px; } }
+
+  .paste {
+    margin-top: 16px; padding: 16px 18px; background: var(--char-band); color: var(--char-ink);
+    border: 1px solid var(--char-line); font-family: var(--display); font-size: 0.96rem;
+    line-height: 1.75; user-select: all;
+  }
+  .paste strong { color: var(--sauce); }
 
   /* ---------- FAQ ---------- */
   .faq { padding-top: 56px; padding-bottom: 20px; }
@@ -603,7 +631,7 @@
   <div class="topbar-inner">
     <div class="brand-cluster">
       <a class="wordmark" href="#top">Dimmsville <span class="apos">Armory</span></a>
-      <span class="status-pill">Type 07 &middot; Class III</span>
+      <span class="status-pill">Type 07 &middot; SOT</span>
     </div>
     <div class="topbar-meta">
       <a class="nav-link" href="#services">Services</a>
@@ -615,6 +643,15 @@
     </div>
   </div>
 </div>
+
+<nav class="jumpbar" aria-label="Section shortcuts">
+  <a href="#transfer" class="key">Start a transfer</a>
+  <a href="#services">Services</a>
+  <a href="#how">How it works</a>
+  <a href="#faq">Costs &amp; FAQ</a>
+  <a href="#dealers">For dealers</a>
+  <a href="#visit">Contact</a>
+</nav>
 
 <header class="hero" id="top">
   <!-- Photo slot — when the owner supplies a real shop photo:
@@ -629,11 +666,12 @@
     <div class="ffl-badge">
       <span class="lic">Federally Licensed</span>
       <span class="num">FFL 8-23-067-07-9B-2****</span>
-      <span class="kind">Type 07 &mdash; Manufacturer of Firearms &middot; NFA / Class III eligible</span>
+      <span class="kind">Type 07 &mdash; Manufacturer of Firearms &middot; SOT &mdash; suppressors &amp; NFA</span>
     </div>
 
-    <p class="hero-lede">Bought a firearm online? Have it shipped here. We handle FFL transfers,
-      custom gunsmithing, NFA paperwork, and special orders for Juniata and Perry County.</p>
+    <p class="hero-lede">Bought a firearm online? Have it shipped here. We're a federally licensed
+      firearms dealer (an &ldquo;FFL&rdquo;) handling transfers, private sales, custom gunsmithing,
+      and suppressors for Juniata and Perry County.</p>
 
     <div class="cta-row">
       <a class="btn btn-primary" href="#transfer">Request a Transfer</a>
@@ -662,7 +700,9 @@
         <p class="kicker">01</p>
         <h3>FFL Transfers</h3>
         <p>Buy from GunBroker, Palmetto State, Bud's, or any out-of-state dealer and have it
-          shipped to us. We receive it, run your background check, and hand it over in person.</p>
+          shipped to us. We receive it, run your background check, and hand it over in person.
+          We also handle private sales between individuals, which Pennsylvania requires to go
+          through a dealer.</p>
         <a class="go" href="#transfer">Request a transfer &rarr;</a>
       </div>
       <div class="pick">
@@ -753,7 +793,25 @@
     <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 
     <fieldset>
-      <legend>1 &middot; Your information</legend>
+      <legend>1 &middot; What kind of transfer</legend>
+      <div class="field-row one">
+        <div class="field">
+          <label for="t-kind">Which describes you? <span class="req">*</span></label>
+          <select id="t-kind" name="Transfer type" required>
+            <option value="">Select&hellip;</option>
+            <option value="Online purchase — shipping in from a dealer">I bought online and it's being shipped here</option>
+            <option value="Private sale between individuals (PA 6111)">I'm buying or selling privately with another person</option>
+            <option value="NFA / suppressor">It's a suppressor or other NFA item</option>
+            <option value="Not sure">I'm not sure</option>
+          </select>
+          <span class="hint">Pennsylvania requires private handgun sales to go through a licensed
+            dealer or the sheriff &mdash; we handle those too.</span>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>2 &middot; Your information</legend>
       <div class="field-row">
         <div class="field">
           <label for="t-name">Full name <span class="req">*</span></label>
@@ -771,11 +829,12 @@
     </fieldset>
 
     <fieldset>
-      <legend>2 &middot; The firearm</legend>
+      <legend>3 &middot; The firearm</legend>
       <div class="field-row">
         <div class="field">
           <label for="t-make">Make / manufacturer <span class="req">*</span></label>
-          <input id="t-make" name="Make" type="text" required>
+          <input id="t-make" name="Make" type="text" placeholder="e.g. Smith &amp; Wesson" required>
+          <span class="hint">Who made the firearm &mdash; not who you bought it from.</span>
         </div>
         <div class="field">
           <label for="t-model">Model <span class="req">*</span></label>
@@ -783,7 +842,7 @@
         </div>
         <div class="field">
           <label for="t-caliber">Caliber <span class="req">*</span></label>
-          <input id="t-caliber" name="Caliber" type="text" required>
+          <input id="t-caliber" name="Caliber" type="text" placeholder="e.g. 5.56 NATO" required>
         </div>
       </div>
       <div class="field-row two">
@@ -806,15 +865,16 @@
     </fieldset>
 
     <fieldset>
-      <legend>3 &middot; Who's shipping it</legend>
+      <legend>4 &middot; Who's shipping it <span style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--muted)">&mdash; skip if it's a private sale</span></legend>
       <div class="field-row">
         <div class="field">
-          <label for="t-dealer">Selling dealer name <span class="req">*</span></label>
-          <input id="t-dealer" name="Selling dealer" type="text" required>
+          <label for="t-dealer">Selling dealer name</label>
+          <input id="t-dealer" name="Selling dealer" type="text">
         </div>
         <div class="field">
-          <label for="t-dealer-contact">Dealer phone or email <span class="req">*</span></label>
-          <input id="t-dealer-contact" name="Dealer contact" type="text" required>
+          <label for="t-dealer-contact">Dealer phone or email</label>
+          <input id="t-dealer-contact" name="Dealer contact" type="text">
+          <span class="hint">Don't have it? Leave it blank &mdash; your order confirmation is enough.</span>
         </div>
         <div class="field">
           <label for="t-order">Order / reference number</label>
@@ -834,7 +894,7 @@
     </fieldset>
 
     <fieldset>
-      <legend>4 &middot; Anything else</legend>
+      <legend>5 &middot; Anything else</legend>
       <div class="field-row two">
         <div class="field">
           <label for="t-pickup">Preferred pickup time</label>
@@ -929,6 +989,61 @@
     <p class="callout">Buying the firearm rather than shipping it? Start here instead &mdash;
       <a href="#transfer">submit a transfer request</a> and we'll contact your dealer for you.</p>
   </div>
+
+  <div class="dealerbox scroll-in" style="border-left-color: var(--sauce); margin-top: 22px;">
+    <h3>Send this to your seller</h3>
+    <p class="lede">Buying online and the retailer is asking for &ldquo;your FFL's information&rdquo;?
+      This is what they need. Copy it into their form or email it to them.</p>
+    <div class="paste" id="pasteBlock">
+      <div><strong>Dimmsville Armory LLC</strong></div>
+      <div>FFL 8-23-067-07-9B-2****</div>
+      <div>Thompsontown, PA 17094</div>
+      <div>(717) 953-6359</div>
+    </div>
+    <button class="btn btn-primary" type="button" id="copyBtn" style="margin-top:16px;">Copy this</button>
+    <p class="callout" style="margin-top:18px;">Your seller will also need our <strong>signed FFL
+      copy</strong>. Have them request it using the form below, or call us &mdash; we send it to
+      licensed dealers the same business day.</p>
+  </div>
+
+  <form class="form-card scroll-in" action="https://formspree.io/f/xlgqanew" method="POST" style="margin-top:22px;">
+    <input type="hidden" name="_subject" value="FFL COPY REQUEST — licensed dealer">
+    <input type="hidden" name="_next" value="https://dimmsville-armory.wisense.workers.dev/thanks?k=dealer">
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+    <fieldset>
+      <legend>Licensed dealers &mdash; request our FFL copy</legend>
+      <div class="field-row">
+        <div class="field">
+          <label for="d-shop">Your business name <span class="req">*</span></label>
+          <input id="d-shop" name="Dealer business" type="text" required>
+        </div>
+        <div class="field">
+          <label for="d-email">Where should we send it? <span class="req">*</span></label>
+          <input id="d-email" name="Dealer email" type="email" required>
+        </div>
+        <div class="field">
+          <label for="d-ffl">Your FFL number <span class="req">*</span></label>
+          <input id="d-ffl" name="Dealer FFL" type="text" required>
+        </div>
+      </div>
+      <div class="field-row two">
+        <div class="field">
+          <label for="d-cust">Customer name on the order</label>
+          <input id="d-cust" name="Customer name" type="text">
+          <span class="hint">Helps us match the package to the right transfer.</span>
+        </div>
+        <div class="field">
+          <label for="d-item">What's shipping</label>
+          <input id="d-item" name="Item shipping" type="text" placeholder="e.g. Glock 19, order #12345">
+        </div>
+      </div>
+    </fieldset>
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">Request FFL Copy</button>
+      <p class="form-note">Licensed dealers only. We send license copies to FFL holders, not to
+        private individuals.</p>
+    </div>
+  </form>
 </section>
 
 <section class="wrap faq" id="faq">
@@ -958,6 +1073,14 @@
       <h3>Does the seller need anything from you?</h3>
       <p>Yes &mdash; a copy of our FFL. Submit the transfer request above and we'll send it to
         them directly, so you're not stuck playing middleman.</p>
+    </div>
+    <div class="faq-item">
+      <h3>I'm buying or selling privately with someone I know &mdash; can you help?</h3>
+      <p>Yes, and in Pennsylvania you generally have to. State law requires private handgun
+        transfers to go through a licensed dealer or your county sheriff. Both people come in
+        together, we run the paperwork and the background check, and you're done in one visit.
+        Call <a href="tel:+17179536359">(717) 953-6359</a> and we'll walk you through it &mdash;
+        it's more routine than it sounds.</p>
     </div>
     <div class="faq-item">
       <h3>Can I buy a firearm on this website?</h3>
@@ -1078,6 +1201,20 @@
         sync();
       });
       sync();
+    })();
+
+    /* ---- Copy the dealer details in one tap ---- */
+    (function () {
+      var btn = document.getElementById("copyBtn"), box = document.getElementById("pasteBlock");
+      if (!btn || !box || !navigator.clipboard) return;
+      btn.addEventListener("click", function () {
+        var text = box.innerText.trim();
+        navigator.clipboard.writeText(text).then(function () {
+          var was = btn.textContent;
+          btn.textContent = "Copied";
+          setTimeout(function () { btn.textContent = was; }, 1800);
+        });
+      });
     })();
 
     /* ---- Scroll-in reveals ----
