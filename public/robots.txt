@@ -1,5 +1,7 @@
 User-agent: *
-Allow: /
-Disallow: /thanks.html
+Disallow: /
 
-Sitemap: https://dimmsville-armory.wisense.workers.dev/sitemap.xml
+# Parked 2026-07-26. This is an unsolicited demo — the business has not
+# agreed to it, so it should not be indexed while it sits unattended.
+# To go live: restore "Allow: /", re-add the sitemap line, and remove the
+# noindex meta from index.html.
