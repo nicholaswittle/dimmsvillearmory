@@ -6,4 +6,5 @@ node_modules
 
 # Internal — sales strategy, pricing, unmasked FFL number. Never in the public repo.
 BUILD_PLAN.md
+research/
 .env*
